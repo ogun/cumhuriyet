@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumhuriyet Newspaper Archive (1930)</title>
+    <style>
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #222;
+            color: #fff;
+        }
+
+        #openseadragon-viewer {
+            width: 100%;
+            height: 100%;
+        }
+
+        .info-panel {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            max-width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        p {
+            margin: 0;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        /* --- Overlay Styles --- */
+        .month-overlay {
+            box-sizing: border-box;
+            border: 2px solid rgba(255, 255, 0, 0.2);
+            /* Subtle yellow border */
+            transition: all 0.2s ease-in-out;
+        }
+
+        .month-overlay:hover {
+            border: 4px solid rgba(255, 165, 0, 0.9);
+            /* Bright orange border on hover */
+            background-color: rgba(255, 255, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="openseadragon-viewer"></div>
+
+    <div class="info-panel">
+        <h1>Cumhuriyet Archive</h1>
+        <p>This archive contains the front pages from 1930 to 2010, arranged in a grid by month. Hover over a month to
+            highlight it.</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.1/openseadragon.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var viewer = OpenSeadragon({
+                id: "openseadragon-viewer",
+                prefixUrl: "https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.1/images/",
+                tileSources: "cumhuriyet_1930", // Use your fixed-grid DZI
+                animationTime: 0.8,
+                blendTime: 0.1,
+                constrainDuringPan: true,
+                maxZoomPixelRatio: 2,
+                minZoomLevel: 0.5,
+                visibilityRatio: 1,
+                zoomPerScroll: 1.5,
+                showNavigator: true,
+                navigatorPosition: "BOTTOM_RIGHT"
+            });
+        });
+    </script>
+
+</body>
+
+</html>
